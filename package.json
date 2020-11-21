@@ -11,7 +11,7 @@
     "tsc": "tsc",
     "build": "npm-run-all clean tsc",
     "start": "node .",
-    "check-types": "tsc --noEmit --resolveJsonModule",
+    "check-types": "tsc --noEmit",
     "eslint": "eslint src/**/*.ts",
     "eslint:fix": "eslint src/**/*.ts --fix",
     "lint": "npm-run-all eslint check-types",
@@ -29,9 +29,9 @@
     "eslint": "^7.14.0",
     "eslint-config-prettier": "6.15.0",
     "husky": "^4.3.0",
-    "lint-staged": "^10.5.1",
     "npm-run-all": "^4.1.5",
     "prettier": "2.2.0",
+    "pretty-quick": "^3.1.0",
     "rimraf": "^3.0.2",
     "ts-node": "^9.0.0",
     "ts-node-dev": "^1.0.0",
@@ -42,12 +42,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "pretty-quick --staged"
     }
-  },
-  "lint-staged": {
-    "*.{js,ts}": "eslint --cache --fix",
-    "*.ts": "tsc --noEmit",
-    "*.{js,ts,json}": "prettier --write"
   }
 }
