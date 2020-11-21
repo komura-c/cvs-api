@@ -1,8 +1,8 @@
-import * as puppeteer from 'puppeteer';
+import { launch } from 'puppeteer';
 import { sejProduct } from '../interfaces/sej';
 
 export const getSejProducts = async (): Promise<sejProduct[]> => {
-  const browser = await puppeteer.launch();
+  const browser = await launch();
   const page = await browser.newPage();
 
   const sejURL = 'https://www.sej.co.jp';

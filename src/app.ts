@@ -1,8 +1,8 @@
 import { getSejProducts } from './script/scrapingSej';
-import { writeJsonFile } from './script/writeJsonFile';
+import { objectToJsonFile } from './script/toJson';
 
 const main = async () => {
   const scrapingData = await getSejProducts();
-  return writeJsonFile(scrapingData);
+  return objectToJsonFile(scrapingData);
 };
 void main();
