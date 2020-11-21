@@ -11,7 +11,7 @@
     "tsc": "tsc",
     "build": "npm-run-all clean tsc",
     "start": "node .",
-    "check-types": "tsc --noEmit",
+    "check-types": "tsc --noEmit --resolveJsonModule",
     "eslint": "eslint src/**/*.ts",
     "eslint:fix": "eslint src/**/*.ts --fix",
     "lint": "npm-run-all eslint check-types",
