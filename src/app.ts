@@ -1,3 +1,4 @@
+import { getDateAndSetDate } from './script/getDate';
 import { getSejProductsAllInThisWeekByArea } from './script/scrapingSej';
 import { objectToJsonFile } from './script/toJson';
 import areaNameList from './areaNameList.json';
@@ -23,11 +24,3 @@ const app = () => {
   });
 };
 void app();
-
-const getDateAndSetDate = () => {
-  const jstOffset = 9 * 60 * 60 * 1000;
-  const date = new Date();
-  const offset = date.getTimezoneOffset() + jstOffset;
-  date.setTime(date.getTime() + offset);
-  return date.toISOString().replace(/T/, '-').replace(/\..+/, '');
-};
