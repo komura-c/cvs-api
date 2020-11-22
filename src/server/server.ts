@@ -1,6 +1,7 @@
 import express from 'express';
+import { basicAuthentication } from './auth';
 import sejProducts from '../data/sej-2020-11-21/sej_kanto_2020-11-21.json';
-import { sejProduct } from '../interfaces/product';
+import { shuffleProducts } from '../utils/shuffleProducts';
 
 const app: express.Express = express();
 app.use(express.json());
@@ -28,12 +29,9 @@ app.get('/api/sej/:id', (req, res) => {
   res.send(JSON.stringify(sejProduct));
 });
 
-const shuffleProducts = (products: sejProduct[]) => {
-  for (let i = products.length - 1; i > 0; i--) {
-    const rand = Math.floor(Math.random() * (i + 1));
-    [products[i], products[rand]] = [products[rand], products[i]];
-  }
-  return products;
-};
+app.all('/admin/:id', basicAuthentication);
+app.get('/admin/:id', (req, res) => {
+  res.send('admin');
+});
 
 export const server = app;
