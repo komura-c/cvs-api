@@ -1,5 +1,5 @@
 import { writeFile, existsSync, mkdirSync } from 'fs';
-import { sejProduct } from '../interfaces/sej';
+import { sejProduct } from '../interfaces/product';
 
 export const objectToJsonFile = (
   objectData: sejProduct[],
