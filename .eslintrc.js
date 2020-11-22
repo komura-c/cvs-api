@@ -19,5 +19,7 @@ module.exports = {
     'prettier',
     'prettier/@typescript-eslint',
   ],
-  rules: {},
+  rules: {
+    '@typescript-eslint/no-unsafe-assignment': 'off',
+  },
 };

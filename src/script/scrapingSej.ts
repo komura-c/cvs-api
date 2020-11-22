@@ -1,5 +1,5 @@
 import { launch, Page } from 'puppeteer';
-import { sejProduct } from '../interfaces/sej';
+import { sejProduct } from '../interfaces/product';
 
 const sejURL = 'https://www.sej.co.jp';
 const thisWeek = '/products/a/thisweek';
