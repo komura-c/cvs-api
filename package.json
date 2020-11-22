@@ -5,8 +5,7 @@
   "repository": "https://github.com/komura-c/cvs-scraper",
   "main": "dist/app.js",
   "scripts": {
-    "dev": "ts-node src/app.ts",
-    "dev:watch": "ts-node-dev --respawn src/app.ts",
+    "dev": "ts-node-dev --respawn src/app.ts",
     "clean": "rimraf dist/*",
     "tsc": "tsc",
     "build": "npm-run-all clean tsc",
