@@ -13,7 +13,7 @@ export const getSejProductsAllInThisWeekByArea = async (
   const ariaURL = '/area/' + ariaName + '/1/l100/';
   const firstPageURL = sejURL + thisWeek + ariaURL;
   console.info('firstPageURL: ' + firstPageURL);
-  await page.goto(firstPageURL);
+  await page.goto(firstPageURL, { waitUntil: 'networkidle0' });
   await page.waitForTimeout(3000);
   let items = await getSejProducts(page, targetSelector);
   items = await getNextProducts(page, items);
