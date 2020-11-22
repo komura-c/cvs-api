@@ -1,4 +1,4 @@
-import { writeFile } from 'fs';
+import { writeFile, existsSync, mkdirSync } from 'fs';
 import { sejProduct } from '../interfaces/sej';
 
 export const objectToJsonFile = (
@@ -6,7 +6,10 @@ export const objectToJsonFile = (
   dirPath: string,
   fileName: string
 ): void => {
-  writeFile(dirPath + fileName, JSON.stringify(objectData), (err) => {
+  if (!existsSync(dirPath)) {
+    mkdirSync(dirPath);
+  }
+  return writeFile(dirPath + fileName, JSON.stringify(objectData), (err) => {
     if (err) throw err;
     console.info(fileName + 'を保存');
   });
