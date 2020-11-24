@@ -9,13 +9,15 @@
     "clean": "rimraf dist/*",
     "tsc": "tsc",
     "build": "npm-run-all clean tsc",
-    "start": "node .",
+    "start:node": "node .",
     "check-types": "tsc --noEmit",
     "eslint": "eslint src/**/*.ts",
     "eslint:fix": "eslint src/**/*.ts --fix",
     "lint": "npm-run-all eslint check-types",
     "format": "prettier --write 'src/**/*.{js,ts,json}'",
-    "lint:fix": "npm-run-all eslint:fix check-types format"
+    "lint:fix": "npm-run-all eslint:fix check-types format",
+    "start": "forever start -v -c ts-node src/app.ts",
+    "stop": "forever stop src/app.ts"
   },
   "keywords": [],
   "author": "komura-c",
@@ -42,6 +44,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-basic-auth": "^1.2.0",
+    "forever": "^3.0.4",
     "node-cron": "^2.0.3",
     "puppeteer": "^5.5.0"
   },

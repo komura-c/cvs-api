@@ -1,14 +1,19 @@
 import express from 'express';
 import { basicAuthentication } from './auth';
-import sejProducts from '../data/sej-2020-11-21/sej_kanto_2020-11-21.json';
 import { shuffleProducts } from '../utils/shuffleProducts';
+import { readFileSync } from 'fs';
+import { sejProduct } from '../interfaces/product';
+
+const sejProducts: sejProduct[] = JSON.parse(
+  readFileSync('src/data/sej_2020-11-24/sej_kanto.json', 'utf8')
+);
 
 const app: express.Express = express();
 app.use(express.json());
 
 app.get('/', (req, res) => {
   res.send(
-    'CVS API is sample api of convenience store products data. \\n ex. GET:/api/sej/1'
+    'CVS API is sample api of convenience store products data. ex. GET:/api/sej/1'
   );
 });
 
@@ -26,12 +31,13 @@ app.get('/api/sej/:id', (req, res) => {
   const sejProduct = sejProducts.find((_, i) => i === parseInt(req.params.id));
   if (!sejProduct)
     return res.status(404).send('The product with the given ID was not found.');
+
   res.send(JSON.stringify(sejProduct));
 });
 
 app.all('/admin/:id', basicAuthentication);
 app.get('/admin/:id', (req, res) => {
-  res.send('admin');
+  res.send('Welcome to admin page!!');
 });
 
 export const server = app;
