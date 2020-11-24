@@ -1,4 +1,4 @@
-export const getDateAndSetDate = (): string => {
+export const getDateJST = (): string => {
   const jstOffset = 9 * 60 * 60 * 1000;
   const date = new Date();
   const offset = date.getTimezoneOffset() + jstOffset;
