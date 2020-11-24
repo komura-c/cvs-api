@@ -1,7 +1,12 @@
 import express from 'express';
 import { basicAuthentication } from './auth';
-import sejProducts from '../data/sej-2020-11-21/sej_kanto_2020-11-21.json';
 import { shuffleProducts } from '../utils/shuffleProducts';
+import { readFileSync } from 'fs';
+import { sejProduct } from '../interfaces/product';
+
+const sejProducts: sejProduct[] = JSON.parse(
+  readFileSync('src/data/sej_2020-11-21/sej_kanto_2020-11-21.json', 'utf8')
+);
 
 const app: express.Express = express();
 app.use(express.json());
@@ -31,7 +36,7 @@ app.get('/api/sej/:id', (req, res) => {
 
 app.all('/admin/:id', basicAuthentication);
 app.get('/admin/:id', (req, res) => {
-  res.send('admin');
+  res.send('Welcome to admin page!!');
 });
 
 export const server = app;

@@ -1,7 +1,7 @@
 import { getDateAndSetDate } from './getDate';
 import { getSejProductsAllInThisWeekByArea } from './scrapingSej';
 import { objectToJsonFile } from './toJson';
-import areaNameList from './areaNameList.json';
+import areaNameList from '../data/areaNameList.json';
 
 export const scraper = (): Promise<void> => {
   const today = getDateAndSetDate();
